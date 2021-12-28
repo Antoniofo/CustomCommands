@@ -8,7 +8,7 @@ namespace CustomCommands.Commands
         Name = "jail",
         Aliases = new string[] { },
         Description = "Jail/unjail a player",
-        Permission = "twin.jail",
+        Permission = "cc.jail",
         Platforms = new[] { Platform.RemoteAdmin },
         Usage = "Type jail to jail a player"
         )]
@@ -36,7 +36,7 @@ namespace CustomCommands.Commands
                             {
                                 SynapseController.Server.Map.Round.RoundLock = false;
                             }
-                            result.Message = "Le joueur a été unjail";
+                            result.Message = "player unjail";
                             result.State = CommandResultState.Ok;
                             break;
                         }
@@ -47,7 +47,7 @@ namespace CustomCommands.Commands
                                 SynapseController.Server.Map.Round.RoundLock = true;
                             }
                             players.Jail.JailPlayer(context.Player);
-                            result.Message = "Le joueur a été jail";
+                            result.Message = "player jail";
                             result.State = CommandResultState.Ok;
                             break;
                         }
@@ -64,7 +64,7 @@ namespace CustomCommands.Commands
                             {
                                 SynapseController.Server.Map.Round.RoundLock = false;
                             }
-                            result.Message = "Le joueur a été unjail";
+                            result.Message = "player unjail";
                             result.State = CommandResultState.Ok;
                             break;
                         }
@@ -75,7 +75,7 @@ namespace CustomCommands.Commands
                                 SynapseController.Server.Map.Round.RoundLock = true;
                             }
                             players.Jail.JailPlayer(context.Player);
-                            result.Message = "Le joueur a été jail";
+                            result.Message = "player jail";
                             result.State = CommandResultState.Ok;
                             break;
                         }
@@ -84,14 +84,14 @@ namespace CustomCommands.Commands
                     else
                     {
                         result.State = CommandResultState.Error;
-                        result.Message = "Le joueur n'a pas été trouvé";
+                        result.Message = "player unknown";
                     }
 
                 }
                 if (result.State != CommandResultState.Ok)
                 {
                     result.State = CommandResultState.Error;
-                    result.Message = "Le joueur n'a pas été trouvé";
+                    result.Message = "player unknown";
                 }
 
             }

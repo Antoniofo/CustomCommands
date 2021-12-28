@@ -7,7 +7,7 @@ namespace CustomCommands.Commands
         Name = "cisound",
         Aliases = new string[] { "playci" },
         Description = "Play the sound when chaos spawn but don't spawn chaos",
-        Permission = "twin.sound",
+        Permission = "cc.sound",
         Platforms = new[] { Platform.RemoteAdmin },
         Usage = "Type cisound or playci to play the sound"
         )]
@@ -20,7 +20,7 @@ namespace CustomCommands.Commands
 
             SynapseController.Server.Map.Round.PlayChaosSpawnSound();
             result.State = CommandResultState.Ok;
-            result.Message = "Le son a été joué";
+            result.Message = "Sound played for D-boii";
             return result;
         }
     }

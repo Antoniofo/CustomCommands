@@ -9,7 +9,7 @@ namespace CustomCommands.Commands
         Name = "size",
         Aliases = new string[] { },
         Description = "change the size of a player",
-        Permission = "twin.size",
+        Permission = "cc.size",
         Platforms = new[] { Platform.RemoteAdmin },
         Usage = "size x y z"
         )]
@@ -40,13 +40,13 @@ namespace CustomCommands.Commands
                     }
                     if (exec)
                     {
-                        result.Message = "La taille du/des joueur/s a été changé";
+                        result.Message = "Size changed";
                         result.State = CommandResultState.Ok;
 
                     }
                     else
                     {
-                        result.Message = "Le joueur n'a pas été trouvé";
+                        result.Message = "player unknown";
                         result.State = CommandResultState.Error;
 
                     }
@@ -54,14 +54,14 @@ namespace CustomCommands.Commands
                 }
                 else
                 {
-                    result.Message = "La taille donné est inutilisable";
+                    result.Message = "Unusable parameter";
                     result.State = CommandResultState.Error;
                 }
             }
             else
             {
                 result.State = CommandResultState.Error;
-                result.Message = "Vous n'avez pas entré le bon nombre d'arguments";
+                result.Message = "Not the good amount of argument";
             }
 
             return result;

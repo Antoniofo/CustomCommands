@@ -10,7 +10,7 @@ namespace CustomCommands.Commands
         Name = "room",
         Aliases = new string[] { },
         Description = "Change color of all room",
-        Permission = "twin.room",
+        Permission = "cc.room",
         Platforms = new[] { Platform.RemoteAdmin },
         Usage = "Type room"
         )]
@@ -31,7 +31,7 @@ namespace CustomCommands.Commands
                     room.LightController.WarheadLightOverride = true;
 
                 }
-                result.Message = "Les lumières ont été changer";
+                result.Message = "Lights have changed";
                 result.State = CommandResultState.Ok;
             }
             else
@@ -41,7 +41,7 @@ namespace CustomCommands.Commands
                     room.LightController.WarheadLightOverride = false;
                     room.LightController.WarheadLightColor = new Color(255 / (byte.MaxValue), 0 / (byte.MaxValue), 0 / (byte.MaxValue));
                 }
-                result.Message = "Les lumières ont été reset";
+                result.Message = "Lights have been reset";
                 result.State = CommandResultState.Ok;
             }
             return result;

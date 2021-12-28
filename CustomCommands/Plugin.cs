@@ -9,7 +9,7 @@ namespace CustomCommands
 {
     [PluginInformation(
         Name = "CustomCommands",
-        Author = "Antonio",
+        Author = "Antoniofo",
         Description = "Adds some commands",
         LoadPriority = 0,
         SynapseMajor = 2,

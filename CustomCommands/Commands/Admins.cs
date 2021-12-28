@@ -21,9 +21,17 @@ namespace CustomCommands.Commands
         public CommandResult Execute(CommandContext context)
         {
             var result = new CommandResult();
-            IEnumerable<Player> admins = Server.Get.Players.Where(x => x.RemoteAdminAccess == true);
-            result.State = CommandResultState.Ok;
-            result.Message = $"Il y a {admins.Count()} admin connecté";
+            if (Plugin.Config.AdminCommand)
+            {
+                IEnumerable<Player> admins = Server.Get.Players.Where(x => x.RemoteAdminAccess == true);
+                result.Message = $"{admins.Count()} connected admin";
+                result.State = CommandResultState.Ok;
+            }
+            else
+            {
+                result.State = CommandResultState.Error;
+                result.Message = "Command not activated";
+            }            
             return result;
         }
     }
