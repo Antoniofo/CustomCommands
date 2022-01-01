@@ -14,7 +14,7 @@ namespace CustomCommands
         LoadPriority = 0,
         SynapseMajor = 2,
         SynapseMinor = 8,
-        SynapsePatch = 0,
+        SynapsePatch = 1,
         Version = "v1.1.0"
 
         )]
