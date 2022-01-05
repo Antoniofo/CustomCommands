@@ -15,7 +15,7 @@ You will need to assign permission to role for using the commands here they are.
 - cc.jail      : to jail and unjail a player
 - cc.room      : to change the color of the lights in all the rooms
 - cc.size      : to change the size of a player
-- cc.vehicule  : for spawnvehicule command (does not do a respawn)$
+- cc.sound     : to play the chaos sound (only heard by Class-D)
 
 admin command does not require permission but can be disabled in the config file
 ```
