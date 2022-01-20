@@ -19,7 +19,7 @@ namespace CustomCommands.Commands
         {
 
             var result = new CommandResult();
-
+            
 
             if (context.Arguments.Count == 1)
             {

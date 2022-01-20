@@ -12,9 +12,9 @@ namespace CustomCommands
         Author = "Antoniofo",
         Description = "Adds some commands",
         LoadPriority = 0,
-        SynapseMajor = 2,
-        SynapseMinor = 8,
-        SynapsePatch = 1,
+        SynapseMajor = SynapseController.SynapseMajor,
+        SynapseMinor = SynapseController.SynapseMinor,
+        SynapsePatch = SynapseController.SynapsePatch,
         Version = "v1.1.0"
 
         )]
