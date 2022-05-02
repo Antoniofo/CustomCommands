@@ -1,6 +1,7 @@
-﻿using Synapse.Command;
+﻿using Synapse;
 using Synapse.Api;
-using Synapse.Api.Plugin;
+using Synapse.Command;
+using UnityEngine;
 
 namespace CustomCommands.Commands
 {
@@ -18,7 +19,6 @@ namespace CustomCommands.Commands
     {
         public CommandResult Execute(CommandContext context)
         {
-
             var result = new CommandResult();
             if (context.Arguments.Count == 4)
             {
@@ -29,17 +29,11 @@ namespace CustomCommands.Commands
 
                 if (float.TryParse(xarg, out var x) && float.TryParse(yarg, out var y) && float.TryParse(zarg, out var z))
                 {
-                    bool exec = false;
-                    foreach (Player players in SynapseController.Server.Players)
+                    if (Server.Get.TryGetPlayers(parg, out var palyers, context.Player))
                     {
-                        if (players.NickName.ToLower().Contains(parg.ToLower()))
-                        {
-                            players.Scale = new UnityEngine.Vector3(float.Parse(xarg), float.Parse(yarg), float.Parse(zarg));
-                            exec = true;
-                        }
-                    }
-                    if (exec)
-                    {
+                        foreach (Player players in palyers)
+                            players.Scale = new Vector3(x, y, z);
+                        
                         result.Message = "Size changed";
                         result.State = CommandResultState.Ok;
 
@@ -50,7 +44,6 @@ namespace CustomCommands.Commands
                         result.State = CommandResultState.Error;
 
                     }
-
                 }
                 else
                 {
