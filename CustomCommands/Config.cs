@@ -13,5 +13,12 @@ namespace CustomCommands
 
         [Description("Activate the admin command that shows how many admins are connected")]
         public bool AdminCommand { get; set; } = true;
+
+        [Description("The ban duration if the player disconnet while he is jailed (in seconds)")]
+        public int BanDuration { get; set; } = int.MaxValue;
+
+        [Description("The reason of the ban")]
+        public string BanReason { get; set; } = "Disconnect in Admin Tower";
+        
     }
 }

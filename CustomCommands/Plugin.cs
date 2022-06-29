@@ -3,7 +3,7 @@ using Synapse.Api;
 using Synapse.Config;
 using Synapse;
 using Synapse.Api.Events.SynapseEventArguments;
-using System;
+using System.Linq;
 
 namespace CustomCommands
 {
@@ -15,7 +15,7 @@ namespace CustomCommands
         SynapseMajor = SynapseController.SynapseMajor,
         SynapseMinor = SynapseController.SynapseMinor,
         SynapsePatch = SynapseController.SynapsePatch,
-        Version = "v1.1.0"
+        Version = "v1.1.1"
 
         )]
     public class Plugin : AbstractPlugin
@@ -29,6 +29,25 @@ namespace CustomCommands
         {
             base.Load();
             Server.Get.Events.Player.PlayerDeathEvent += OnDeath;
+            Server.Get.Events.Player.PlayerLeaveEvent += OnLeave;
+        }
+
+        private void OnLeave(PlayerLeaveEventArgs ev)
+        {            
+            
+            if (ev.Player.Jail.IsJailed)
+            {
+                if (Server.Get.Players.Where(x => x.Jail.IsJailed == true).Count() == 1)
+                {
+                    ev.Player.Jail.UnJailPlayer();
+                    if (Config.RlockOnJail)
+                    {
+                        Map.Get.Round.RoundLock = false;
+                    }
+                }
+                
+                ev.Player.Ban(Config.BanDuration,"Disconnect in Admin Tower");                
+            }
         }
 
         private void OnDeath(PlayerDeathEventArgs ev)
