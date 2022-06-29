@@ -38,15 +38,16 @@ namespace CustomCommands
             if (ev.Player.Jail.IsJailed)
             {
                 if (Server.Get.Players.Where(x => x.Jail.IsJailed == true).Count() == 1)
-                {
-                    ev.Player.Jail.UnJailPlayer();
+                {                    
                     if (Config.RlockOnJail)
                     {
                         Map.Get.Round.RoundLock = false;
                     }
                 }
-                
-                ev.Player.Ban(Config.BanDuration,"Disconnect in Admin Tower");                
+                if (!ev.Player.RemoteAdminAccess)
+                {
+                    ev.Player.Ban(Config.BanDuration, "Disconnect in Admin Tower");
+                }                
             }
         }
 
